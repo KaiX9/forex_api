@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body data-th-object="${forex}">
+    <div class="container">
+        Last Updated:
+        <p data-th-text="*{lastUpdated}"></p>
+        <br>
+        Next Update:
+        <p data-th-text="*{nextUpdate}"></p>
+        <br>
+        Based On:
+        <p data-th-text="*{baseCode}"></p>
+        <br>
+        Conversion Rates:
+        <table>
+            <tr>
+                <td>Australian Dollar - </td>
+                <td data-th-text="*{rates.getAud()}"></td>
+            </tr>
+            <tr>
+                <td>Chinese Renminbi - </td>
+                <td data-th-text="*{rates.getCny()}"></td>
+            </tr>
+            <tr>
+                <td>Japanese Yen - </td>
+                <td data-th-text="*{rates.getJpy()}"></td>
+            </tr>
+            <tr>
+                <td>Korean Won - </td>
+                <td data-th-text="*{rates.getKrw()}"></td>
+            </tr>
+            <tr>
+                <td>Malaysian Ringgit - </td>
+                <td data-th-text="*{rates.getMyr()}"></td>
+            </tr>
+            <tr>
+                <td>Singapore Dollar - </td>
+                <td data-th-text="*{rates.getSgd()}"></td>
+            </tr>
+            <tr>
+                <td>Thai Baht - </td>
+                <td data-th-text="*{rates.getThb()}"></td>
+            </tr>
+            <tr>
+                <td>Taiwan Dollar - </td>
+                <td data-th-text="*{rates.getTwd()}"></td>
+            </tr>
+            <tr>
+                <td>US Dollar - </td>
+                <td data-th-text="*{rates.getUsd()}"></td>
+            </tr>
+        </table>
+        
+    </div>    
+</body>
+</html>

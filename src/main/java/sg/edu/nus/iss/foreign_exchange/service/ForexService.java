@@ -9,19 +9,21 @@ import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import sg.edu.nus.iss.foreign_exchange.model.Forex;
-import sg.edu.nus.iss.foreign_exchange.model.Rates;
 
 @Service
 public class ForexService {
 
-    @Value("${forex.currency.api.key}")
-    private String forexApiKey;
+    @Value("${forex.currency.url}")
+    private String forexUrl;
 
-    public Optional<Forex> getRates() throws IOException {
+    public Optional<Forex> getRates(String baseCode) throws IOException {
         Forex forex = new Forex();
-        String url = "https://v6.exchangerate-api.com/v6/" + forexApiKey + "/latest/SGD";
+        String url = UriComponentsBuilder
+                    .fromUriString(forexUrl + baseCode)
+                    .toUriString();                    
         RequestEntity req = RequestEntity
                             .get(url)
                             .accept(MediaType.APPLICATION_JSON)
